@@ -93,14 +93,13 @@ export function StoryCard({
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/40">
-              <motion.button
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-black px-3 py-1.5 rounded-lg text-sm font-medium flex items-center"
-                onClick={handleViewNFT}
+                className="bg-white text-black px-3 py-1.5 rounded-lg text-sm font-medium flex items-center shadow-lg"
               >
                 View NFT <ArrowUpRight className="h-3.5 w-3.5 ml-1" />
-              </motion.button>
+              </motion.div>
             </div>
           </div>
         ) : (
