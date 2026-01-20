@@ -1,4 +1,3 @@
-<!-- markdownlint-disable MD033 -->
 <h1 align="center">GroqTales</h1>
 <p align="center"><b>AI-Powered Web3 Storytelling Platform</b></p>
 <p align="center">Create, share, and own AI-generated stories and comics as NFTs on the Monad blockchain.</p>
@@ -18,11 +17,12 @@
   <img src="https://img.shields.io/badge/website-groqtales.xyz-0052cc?style=flat-square" alt="Website"/>
   <a href="mailto:support@groqtales.xyz"><img src="https://img.shields.io/badge/contact-support%40groqtales.xyz-orange?style=flat-square" alt="Contact Us"/></a>
   <a href="https://discord.gg/JK29FZRm"><img src="https://img.shields.io/discord/1245696768829601812?label=Discord&logo=discord&style=flat-square" alt="Discord"/></a>
-
 </p>
 
+
 <p align="center">
-  <img src="https://img.shields.io/badge/GSSOC'25-Open%20Source-orange?style=flat-square" alt="GSSOC'25"/>
+  <img src="https://img.shields.io/badge/SWOC'26-Open%20Source-orange?style=flat-square" alt="SWOC'26"/>
+  <img src="https://img.shields.io/badge/GSSOC'25-Legacy-lightgrey?style=flat-square" alt="GSSOC'25"/>
   <img src="https://img.shields.io/badge/FOSS%20Hack-Open%20Source-blue?style=flat-square" alt="FOSS Hack"/>
   <img src="https://img.shields.io/badge/LGM--SOC-Open%20Source-purple?style=flat-square" alt="LGM-SOC"/>
   <img src="https://img.shields.io/badge/MLH-Open%20Source-red?style=flat-square" alt="MLH"/>
@@ -35,49 +35,33 @@
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=4000&pause=600&color=F97316&center=true&vCenter=true&width=800&lines=---+AI-powered+Web3+Storytelling+on+the+Monad+Blockchain+---" alt="Animated Divider" />
 </p>
-<!-- markdownlint-enable MD033 -->
+
+---
 
 ## What is GroqTales?
-
-GroqTales is an open-source, AI-powered Web3 storytelling platform. Writers and artists can generate
-immersive narratives or comic-style stories using Groq AI, then mint and trade them as NFTs on the
-Monad blockchain. With a focus on ownership, authenticity, and community, GroqTales bridges the
-world of creative writing, generative AI, and decentralized technology.
+GroqTales is an open-source, AI-powered Web3 storytelling platform. Writers and artists can generate immersive narratives or comic-style stories using Groq AI, then mint and trade them as NFTs on the Monad blockchain. With a focus on ownership, authenticity, and community, GroqTales bridges the world of creative writing, generative AI, and decentralized technology.
 
 ---
 
 ## Features
-
-- **AI-Driven Story & Comic Generation** Use Groq AI to generate stories or comic panel outlines by
-  specifying title, genre, setting, characters, and themes. Both text and comic formats are
-  supported.
-- **Extensive Story Customization (70+ Parameters)** Fine-tune every aspect of your story with
-  comprehensive customization across 9 categories:
-  - **Characters**: Name, count, traits, age, background, protagonist type
-  - **Plot & Structure**: Type, conflict, arc, pacing, ending, plot twists
-  - **Setting & World**: Time period, location, world-building depth, atmosphere
-  - **Writing Style & Tone**: Voice, tone, style, reading level, mood, dialogue percentage,
-    description detail
-  - **Themes & Messages**: Primary/secondary themes, moral complexity, social commentary
-  - **Content Controls**: Violence, romance, language levels, mature content warnings
-  - **Advanced Options**: Chapters, foreshadowing, symbolism, multiple POVs
-  - **Inspiration & References**: Similar works, inspired by, tropes to avoid/include
-  - **Technical Parameters**: AI creativity slider, model selection
-- **NFT Minting on Monad Blockchain** Seamlessly mint your stories as NFTs on Monad (Testnet live,
-  Mainnet coming soon). Each NFT proves authenticity, ownership, and collectibility.
-- **Community Gallery** Publish your stories publicly, browse the gallery, and interact with other
-  creators. Stories can be shared freely or as NFTs.
-- **Progressive Disclosure UI** Clean, accordion-based interface with 9 collapsible sections. Keeps
-  simple tasks simple while offering advanced options when needed. Only prompt is
-  required—everything else is optional!
-- **Wallet Integration** Connect with MetaMask, WalletConnect, or Ledger for secure publishing and
-  minting. Wallet is required for NFT actions.
-- **Real-Time Story Streaming** Watch your story unfold in real-time as Groq AI generates each
-  segment.
-- **Mobile-Friendly & Responsive UI** Built with modern web technologies for a seamless experience
-  on any device.
-- **Extensible & Open Source** Modular codebase with clear separation of frontend, backend, and
-  smart contract logic. Contributions are welcome!
+- **AI-Driven Story & Comic Generation** Use Groq AI to generate stories or comic panel outlines by specifying title, genre, setting, characters, and themes. Both text and comic formats are supported.
+- **Extensive Story Customization (70+ Parameters)** Fine-tune every aspect of your story with comprehensive customization across 9 categories:
+    - **Characters**: Name, count, traits, age, background, protagonist type
+    - **Plot & Structure**: Type, conflict, arc, pacing, ending, plot twists
+    - **Setting & World**: Time period, location, world-building depth, atmosphere
+    - **Writing Style & Tone**: Voice, tone, style, reading level, mood, dialogue percentage, description detail
+    - **Themes & Messages**: Primary/secondary themes, moral complexity, social commentary
+    - **Content Controls**: Violence, romance, language levels, mature content warnings
+    - **Advanced Options**: Chapters, foreshadowing, symbolism, multiple POVs
+    - **Inspiration & References**: Similar works, inspired by, tropes to avoid/include
+    - **Technical Parameters**: AI creativity slider, model selection
+- **NFT Minting on Monad Blockchain** Seamlessly mint your stories as NFTs on Monad (Testnet live, Mainnet coming soon). Each NFT proves authenticity, ownership, and collectibility.
+- **Community Gallery** Publish your stories publicly, browse the gallery, and interact with other creators. Stories can be shared freely or as NFTs.
+- **Progressive Disclosure UI** Clean, accordion-based interface with 9 collapsible sections. Keeps simple tasks simple while offering advanced options when needed. Only prompt is required—everything else is optional!
+- **Wallet Integration** Connect with MetaMask, WalletConnect, or Ledger for secure publishing and minting. Wallet is required for NFT actions.
+- **Real-Time Story Streaming** Watch your story unfold in real-time as Groq AI generates each segment.
+- **Mobile-Friendly & Responsive UI** Built with modern web technologies for a seamless experience on any device.
+- **Extensible & Open Source** Modular codebase with clear separation of frontend, backend, and smart contract logic. Contributions are welcome!
 
 ---
 
@@ -93,9 +77,8 @@ world of creative writing, generative AI, and decentralized technology.
 ---
 
 ## Quick Start
-
 ```bash
-git clone https://github.com/Drago-03/GroqTales
+git clone https://github.com/IndieHub25/GroqTales
 cd GroqTales
 npm install
 cp .env.example .env.local
@@ -107,11 +90,64 @@ npm run dev
 2. Connect your wallet (optional; required for minting/publishing)
 3. Generate your story → Publish or Mint as NFT
 
-See the [Wiki](https://github.com/Drago-03/GroqTales/wiki) for configuration, environment variables,
-and deployment details.
+See the [Wiki](https://github.com/IndieHub25/GroqTales/wiki) for configuration, environment variables, and deployment details.
 
 ---
 
+## 🛠️ Environment Configuration
+
+To run this project locally, you must set up your environment variables. Create a file named `.env.local` in the root directory and populate it with the following keys:
+
+### `.env.local` Setup
+
+| Variable | Requirement | Description |
+| :--- | :---: | :--- |
+| `GROQ_API_KEY` | **Required** | Powers the AI story generation engine via Groq LPU. |
+| `MONAD_RPC_URL` | **Required** | The RPC endpoint for interacting with the Monad Testnet. |
+| `MONGODB_URI` | **Required** | Connection string for the database storing user profiles and drafts. |
+| `UNSPLASH_API_KEY` | *Optional* | API key used for fetching high-quality cover images for stories. |
+| `NEXT_PUBLIC_CONTRACT_ADDR` | **Required** | The smart contract address for the deployed NFT collection. |
+
+### 🔑 How to get these keys:
+1. **Groq API:** Generate a key at [Groq Cloud Console](https://console.groq.com/).
+2. **Monad RPC:** Use the official [Monad Testnet docs](https://docs.monad.xyz/) to find the latest RPC URL.
+3. **MongoDB:** Create a free cluster at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+4. **Unsplash:** Register an application on the [Unsplash Developer Portal](https://unsplash.com/developers).
+
+> [!WARNING]  
+> Never commit your `.env.local` file to version control. Ensure it is listed in your `.gitignore` to prevent leaking sensitive API keys.
+
+---
+
+## 📜 Smart Contracts
+GroqTales utilizes **Solidity-based** smart contracts for NFT minting and ownership management. We prefer **Hardhat** for local development, compilation, and testing.
+
+### 🛠️ Contract Workflow
+- **Contract Location:** `/contracts/`
+- **Compile:** `npx hardhat compile`
+- **Local Test:** `npx hardhat test`
+- **Network:** Monad Testnet (ChainID: `10143`)
+
+> [!WARNING]
+> **Safety Disclaimer:** GroqTales currently operates exclusively on the **Monad Testnet**. Do not send real funds (ETH or Mainnet MON) to these contract addresses. Always use a dedicated developer/faucet-funded wallet for testing.
+
+---
+
+## 🏗️ System Architecture
+GroqTales follows a decoupled architecture ensuring high-speed AI inference and decentralized ownership.
+
+```mermaid
+graph TD
+    A[User Interface - Next.js] -->|Prompt| B[Backend API - Node.js]
+    B -->|Inference Request| C[Groq AI LPU Engine]
+    C -->|Streamed Story| B
+    B -->|Metadata| D[MongoDB]
+    B -->|IPFS Upload| E[Story/Image Data]
+    A -->|Mint NFT| F[Monad Testnet Blockchain]
+    F --- G[Smart Contracts - Solidity]
+```
+
+---
 ## For Developers
 
 - **Folder Structure:**
@@ -141,18 +177,15 @@ and deployment details.
 
 - **Contributions:**
   - Issues are tagged by difficulty, area, and technology for easy onboarding.
-  - Please read [CONTRIBUTING.md](CONTRIBUTING.md) and [CONTRIBUTORS.md](CONTRIBUTORS.md) before
-    submitting PRs.
+  - Please read [CONTRIBUTING.md](CONTRIBUTING.md) and [CONTRIBUTORS.md](CONTRIBUTORS.md) before submitting PRs.
 
 ---
 
 ## 🤝 Contributing
 
-GroqTales is community-powered! We welcome all contributions—whether you're a developer, designer,
-writer, or blockchain enthusiast.
+GroqTales is community-powered! We welcome all contributions—whether you're a developer, designer, writer, or blockchain enthusiast.
 
 **How You Can Help:**
-
 - Tackle issues labeled `good first issue` (great for newcomers)
 - Enhance story-generation logic, outlines, or UI design
 - Add support for new AI models or blockchains
@@ -161,7 +194,6 @@ writer, or blockchain enthusiast.
 - Write or improve documentation and tests
 
 **What’s in It for You:**
-
 - Build your open-source portfolio
 - Feature your work in the contributors section
 - Community recognition and GitHub Sponsors eligibility
@@ -171,7 +203,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 ---
 
 ## Roadmap
-
 - AI visuals: Integrate Stable Diffusion/DALL·E for comic panels
 - Multilingual story generation
 - Native marketplace for story NFTs
@@ -183,15 +214,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## Contributors
 
-We value every contribution! Please read our [CONTRIBUTORS.md](CONTRIBUTORS.md) file before making
-your first contribution to understand our guidelines and recognition process.
+We value every contribution! Please read our [CONTRIBUTORS.md](CONTRIBUTORS.md) file before making your first contribution to understand our guidelines and recognition process.
 
 ### Project Contributors
-
-<!-- markdownlint-disable MD033 -->
 <p align="center">
-  <a href="https://github.com/Drago-03/GroqTales/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=Drago-03/GroqTales" alt="Contributors" />
+  <a href="https://github.com/Drago-03/IndieHub25/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=IndieHub25/GroqTales" alt="Contributors" />
   </a>
 </p>
 
@@ -202,35 +230,20 @@ Thanks to these amazing people for making GroqTales better!
 ## Documentation & Architecture
 
 ### Core Documentation
-
-- **Architecture Overview:** [ARCHITECTURE.md](docs/ARCHITECTURE.md) - Comprehensive system design
-  and technical architecture
-- **Project Wiki:** [GitHub Wiki](https://github.com/Drago-03/GroqTales/wiki) - Detailed guides and
-  documentation
-- **API Documentation:** [Wiki/API](https://github.com/Drago-03/GroqTales/wiki/API) - Backend API
-  reference
-- **Smart Contracts:** [Wiki/Blockchain](https://github.com/Drago-03/GroqTales/wiki/Blockchain) -
-  Contract documentation
+- **Architecture Overview:** [ARCHITECTURE.md](docs/ARCHITECTURE.md) - Comprehensive system design and technical architecture
+- **Project Wiki:** [GitHub Wiki](https://github.com/IndieHub25/GroqTales/wiki) - Detailed guides and documentation
+- **API Documentation:** [Wiki/API](https://github.com/IndieHub25/GroqTales/wiki/API) - Backend API reference
+- **Smart Contracts:** [Wiki/Blockchain](https://github.com/IndieHub25/GroqTales/wiki/Blockchain) - Contract documentation
 
 ### System Architecture
-
-- **Frontend Architecture:**
-  [ARCHITECTURE.md#frontend](docs/ARCHITECTURE.md#frontend-architecture) - Next.js application
-  structure
-- **Backend Architecture:** [ARCHITECTURE.md#backend](docs/ARCHITECTURE.md#backend-architecture) -
-  API and service design
-- **Blockchain Integration:**
-  [ARCHITECTURE.md#blockchain](docs/ARCHITECTURE.md#blockchain-architecture) - Web3 and smart
-  contract integration
-- **AI Integration:** [ARCHITECTURE.md#ai](docs/ARCHITECTURE.md#ai-architecture) - Groq AI
-  implementation
-- **System Diagrams:** [ARCHITECTURE.md#diagrams](docs/ARCHITECTURE.md#system-diagrams) - Mermaid
-  flowcharts and architecture diagrams
+- **Frontend Architecture:** [ARCHITECTURE.md#frontend](docs/ARCHITECTURE.md#frontend-architecture) - Next.js application structure
+- **Backend Architecture:** [ARCHITECTURE.md#backend](docs/ARCHITECTURE.md#backend-architecture) - API and service design
+- **Blockchain Integration:** [ARCHITECTURE.md#blockchain](docs/ARCHITECTURE.md#blockchain-architecture) - Web3 and smart contract integration
+- **AI Integration:** [ARCHITECTURE.md#ai](docs/ARCHITECTURE.md#ai-architecture) - Groq AI implementation
+- **System Diagrams:** [ARCHITECTURE.md#diagrams](docs/ARCHITECTURE.md#system-diagrams) - Mermaid flowcharts and architecture diagrams
 
 ### Development Resources
-
-- **Setup Guide:**
-  [Wiki/Development-Setup](https://github.com/Drago-03/GroqTales/wiki/Development-Setup)
+- **Setup Guide:** [Wiki/Development-Setup](https://github.com/IndieHub25/GroqTales/wiki/Development-Setup)
 - **Contributing:** [CONTRIBUTING.md](CONTRIBUTING.md) - How to contribute to the project
 - **Code of Conduct:** [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) - Community guidelines
 - **Security Policy:** [SECURITY.md](SECURITY.md) - Security practices and vulnerability reporting
@@ -238,32 +251,27 @@ Thanks to these amazing people for making GroqTales better!
 ---
 
 ## Resources
-
 - **Website:** [groqtales.xyz](https://www.groqtales.xyz)
-- **Docs:** [Wiki](https://github.com/Drago-03/GroqTales/wiki)
-- **Community Hub:** [GitHub Discussions](https://github.com/Drago-03/GroqTales/discussions)
+- **Docs:** [Wiki](https://github.com/IndieHub25/GroqTales/wiki)
+- **Community Hub:** [GitHub Discussions](https://github.com/IndieHub25/GroqTales/discussions)
 - **Discord Support:** [Join our Discord](https://discord.gg/JK29FZRm)
 
 ---
 
 ## License
-
 Released under the [MIT License](LICENSE).
 
 ---
 
 ## Security
-
 For vulnerabilities or security-related issues, please refer to [SECURITY.md](SECURITY.md).
 
 ---
 
 ## Note
-
-_GroqTales currently operates on Monad Testnet for NFT minting. Mainnet support coming soon—stay
-tuned!_
+_GroqTales currently operates on Monad Testnet for NFT minting. Mainnet support coming soon—stay tuned!_
 
 ---
 
 <p align="center"><i>Support the project and share it with others.</i></p>
-<!-- markdownlint-enable MD033 -->
+
