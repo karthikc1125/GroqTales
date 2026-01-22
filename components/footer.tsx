@@ -41,6 +41,11 @@ export function Footer() {
       url: 'https://www.linkedin.com/company/indie-hub-exe/?viewAsMember=true',
       label: 'LinkedIn',
     },
+    {
+      icon: <Twitter className="h-5 w-5" />,
+      url: 'https://x.com/_gear_head_03_',
+      label: 'Twitter',
+    },
   ];
 
   return (
@@ -97,7 +102,7 @@ export function Footer() {
                   <Link
                     key={link.url}
                     href={link.url}
-                    className="p-2 border-4 border-foreground rounded-none hover:bg-primary hover:text-white transition-all duration-300 shadow-[4px_4px_0px_0px_var(--shadow-color)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--shadow-color)]"
+                    className="p-2 border-4 border-foreground rounded-none hover:bg-primary transition-all duration-300 shadow-[4px_4px_0px_0px_var(--shadow-color)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--shadow-color)]"
                   >
                     {link.icon}
                     <span className="sr-only">{link.label}</span>
