@@ -44,6 +44,9 @@ export default function StoryDetailsDialog({
   const { account } = useWeb3();
   const { toast } = useToast();
   const [isCommentsOpen, setIsCommentsOpen] = React.useState(false);
+  const [commentCount, setCommentCount] = React.useState(
+    story.comments?.length || 0
+  );
 
   const handlePurchase = () => {
     if (!account) {
@@ -153,7 +156,7 @@ export default function StoryDetailsDialog({
                   onClick={() => setIsCommentsOpen(true)}
                 >
                   <MessageSquare className="w-4 h-4 mr-1" />
-                  {story.comments?.length || 0}
+                  {commentCount}
                 </Button>
                 <Button variant="ghost" size="sm">
                   <Share2 className="w-4 h-4 mr-1" />
@@ -181,6 +184,7 @@ export default function StoryDetailsDialog({
         storyId={story.id || story._id}
         isWalletConnected={!!account}
         isAdmin={isAdmin}
+        onCommentCountChange={setCommentCount}
       />
     </Dialog>
   );

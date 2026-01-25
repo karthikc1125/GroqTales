@@ -39,6 +39,7 @@ interface StoryCommentsDialogProps {
   storyId: string;
   isWalletConnected?: boolean;
   isAdmin?: boolean;
+  onCommentCountChange?: (count: number) => void;
 }
 
 export default function StoryCommentsDialog({
@@ -48,6 +49,7 @@ export default function StoryCommentsDialog({
   storyId,
   isWalletConnected = false,
   isAdmin = false,
+  onCommentCountChange,
 }: StoryCommentsDialogProps) {
   const [newComment, setNewComment] = useState('');
   const [comments, setComments] = useState<Comment[]>([]);
@@ -61,6 +63,11 @@ export default function StoryCommentsDialog({
       fetchComments();
     }
   }, [isOpen, storyId]);
+
+  // Notify parent of comment count changes
+  useEffect(() => {
+    onCommentCountChange?.(comments.length);
+  }, [comments.length, onCommentCountChange]);
 
   const fetchComments = async () => {
     setIsLoading(true);
@@ -152,9 +159,7 @@ export default function StoryCommentsDialog({
       const data = await response.json();
       setComments(
         comments.map((comment) =>
-          comment.id === commentId
-            ? { ...comment, likes: data.likes }
-            : comment
+          comment.id === commentId ? { ...comment, likes: data.likes } : comment
         )
       );
       toast.success(data.liked ? 'Comment liked!' : 'Like removed');
@@ -177,7 +182,6 @@ export default function StoryCommentsDialog({
         body: JSON.stringify({
           commentId,
           action,
-          isAdmin: true,
         }),
       });
 
@@ -232,17 +236,14 @@ export default function StoryCommentsDialog({
                   >
                     <Avatar>
                       <AvatarImage src={comment.author.avatar} />
-                      <AvatarFallback>
-                        {comment.author.name[0]}
-                      </AvatarFallback>
+                      <AvatarFallback>{comment.author.name[0]}</AvatarFallback>
                     </Avatar>
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
                         <div>
                           <div className="flex items-center">
                             <p className="font-medium">{comment.author.name}</p>
-                            {(comment.author.isVerified ||
-                              comment.author.name === 'GroqTales') && (
+                            {comment.author.isVerified && (
                               <VerifiedBadge className="ml-1" size="sm" />
                             )}
                           </div>

@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
+ * Check if the request has admin privileges
+ */
+function isAdminRequest(request: NextRequest): boolean {
+  const cookies = request.cookies;
+  return cookies.get('adminSessionActive')?.value === 'true';
+}
+
+/**
  * GET /api/comments?storyId=xxx
  * Fetch all comments for a specific story
  */
@@ -92,7 +100,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (content.length > 1000) {
+    if (content.trim().length > 1000) {
       return NextResponse.json(
         { error: 'Comment cannot exceed 1000 characters' },
         { status: 400 }
@@ -145,6 +153,14 @@ export async function POST(request: NextRequest) {
  */
 export async function DELETE(request: NextRequest) {
   try {
+    // Check admin privileges (TODO: also allow comment owner)
+    if (!isAdminRequest(request)) {
+      return NextResponse.json(
+        { error: 'Unauthorized: Admin access required' },
+        { status: 403 }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
     const commentId = searchParams.get('commentId');
 

@@ -1,21 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
+ * Check if the request has admin privileges
+ */
+function isAdminRequest(request: NextRequest): boolean {
+  const cookies = request.cookies;
+  return cookies.get('adminSessionActive')?.value === 'true';
+}
+
+/**
  * PATCH /api/comments/moderate
  * Moderate a comment (admin only)
  */
 export async function PATCH(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { commentId, action, isAdmin } = body;
-
-    // Check admin privileges
-    if (!isAdmin) {
+    // Check admin privileges server-side
+    if (!isAdminRequest(request)) {
       return NextResponse.json(
         { error: 'Unauthorized: Admin access required' },
         { status: 403 }
       );
     }
+
+    const body = await request.json();
+    const { commentId, action } = body;
 
     if (!commentId) {
       return NextResponse.json(
