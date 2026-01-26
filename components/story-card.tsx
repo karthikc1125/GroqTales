@@ -135,7 +135,7 @@ export function StoryCard({
             {storyContent}
           </p>
         </CardContent>
-        <CardFooter className="p-4 pt-0 flex justify-between">
+        <CardFooter className="p-4 pt-0 flex flex-wrap gap-2 justify-between">
           <div className="flex space-x-4 text-sm text-gray-600 dark:text-muted-foreground">
             <div className="flex items-center">
               <Heart className="h-3.5 w-3.5 mr-1" />
@@ -161,7 +161,7 @@ export function StoryCard({
               </button>
             )}
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-shrink-0 flex-wrap">
             {story.genre && (
               <span className="text-xs bg-amber-100 dark:bg-muted px-2 py-1 rounded-full text-gray-800 dark:text-white">
                 {story.genre}
