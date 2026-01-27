@@ -137,6 +137,7 @@ export function Header() {
         <div className="flex items-center">
           <Link
             href="/"
+            aria-label="GroqTales home"
             className="flex items-center space-x-2 mr-2 sm:mr-6 group relative"
           >
             <motion.div
@@ -156,7 +157,7 @@ export function Header() {
             </motion.div>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-2">
+          <nav role="navigation" aria-label="Primary navigation" className="hidden md:flex items-center space-x-2">
             {navItems.map((item, index) => (
               <motion.div
                 key={
@@ -173,6 +174,7 @@ export function Header() {
                 {item.type === 'dropdown' ? (
                   <DropdownMenu>
                     <DropdownMenuTrigger
+                      aria-haspopup="true"
                       className={`px-4 py-2 text-sm rounded-md transition-all duration-200 flex items-center text-white hover:text-white/80 hover:bg-white/10 backdrop-blur-sm comic-pop comic-text`}
                     >
                       {item.icon}
@@ -184,6 +186,7 @@ export function Header() {
                         <DropdownMenuItem key={subItem.href} asChild>
                           <Link
                             href={subItem.href}
+                            aria-current={pathname === subItem.href ? 'page' : undefined}
                             className="flex items-center w-full text-foreground/90 hover:text-foreground hover:bg-white/5 comic-text"
                           >
                             {subItem.icon && subItem.icon}
@@ -196,6 +199,7 @@ export function Header() {
                 ) : item.href ? (
                   <Link
                     href={item.href}
+                    aria-current={pathname === item.href ? 'page' : undefined}
                     className={`px-4 py-2 text-sm rounded-md transition-all duration-200 flex items-center text-white hover:text-white/80 hover:bg-white/10 backdrop-blur-sm comic-pop comic-text`}
                   >
                     {item.icon}
@@ -216,6 +220,7 @@ export function Header() {
             size="sm"
             className="hidden md:flex items-center gap-2 px-3 sm:px-5 py-1.5 sm:py-2 rounded-none bg-white text-black border-2 sm:border-4 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] sm:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-primary hover:text-white hover:border-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all duration-200 comic-pop comic-text-bold dark:hover:border-white/50"
             onClick={handleCreateClick}
+            aria-label="Create a new story"
           >
             <PenSquare className="h-4 w-4 mr-2" />
             Create

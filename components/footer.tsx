@@ -50,7 +50,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative mt-20 border-t-8 border-foreground dark:border-slate-700 bg-card dark:bg-slate-950">
+    <footer role="contentinfo" className="relative mt-20 border-t-8 border-foreground dark:border-slate-700 bg-card dark:bg-slate-950">
       {/* Premium Background Glows for Dark Mode */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-0 dark:opacity-100">
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 blur-[120px]" />
@@ -90,7 +90,7 @@ export function Footer() {
                 Create • Mint • Own
               </div>
 
-              <div className="flex gap-3 pt-2">
+              <div className="flex gap-3 pt-2" role="group" aria-label="Social media links">
                 {socialLinks.map((link) => (
                   <Link
                     key={link.url}
@@ -109,7 +109,7 @@ export function Footer() {
             </div>
 
             {/* Explore Section */}
-            <div className="text-center sm:text-left">
+            <nav aria-label="Explore links" className="text-center sm:text-left">
               <h3 className="font-black text-lg mb-5 text-foreground dark:text-white border-b-4 border-primary dark:border-accent inline-block pb-1 uppercase">
                 Explore
               </h3>
@@ -132,10 +132,10 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
 
             {/* Legal Section */}
-            <div className="text-center sm:text-left">
+            <nav aria-label="Legal links" className="text-center sm:text-left">
               <h3 className="font-black text-lg mb-5 text-foreground dark:text-white border-b-4 border-primary dark:border-accent inline-block pb-1 uppercase">
                 Legal
               </h3>
@@ -157,10 +157,10 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
 
             {/* Resources Section */}
-            <div className="text-center sm:text-left">
+            <nav aria-label="Resources links" className="text-center sm:text-left">
               <h3 className="font-black text-lg mb-5 text-foreground dark:text-white border-b-4 border-primary dark:border-accent inline-block pb-1 uppercase">
                 Resources
               </h3>
