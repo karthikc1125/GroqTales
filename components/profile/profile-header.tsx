@@ -44,9 +44,9 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
                   {user.walletAddress.slice(0, 6)}...{user.walletAddress.slice(-4)}
                   <button
                     type="button"
-                    onClick={() => navigator.clipboard?.writeText(user.walletAddress)}
+                    onClick={() => user.walletAddress && navigator.clipboard?.writeText(user.walletAddress)}
                     aria-label="Copy wallet address"
-                    className="ml-1 text-slate-400 hover:text-white"
+                    className="ml-1 text-slate-400 hover:text-white transition-colors"
                   >
                     <Copy className="w-3 h-3" />
                   </button>
@@ -68,13 +68,14 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
                 Follow
               </Button>
             )}
+            
             <Button
               variant="ghost"
               size="icon"
-              aria-label="Share profile"
               className="text-slate-400 hover:text-white"
             >
               <Share2 className="w-5 h-5" />
+              <span className="sr-only">Share profile</span>
             </Button>
           </div>
         </div>
