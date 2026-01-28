@@ -59,6 +59,12 @@ export default function ProfilePage({ params }: { params: { username: string } }
                 Collections feature coming soon.
               </div>
             </TabsContent>
+            
+            <TabsContent value="activity">
+              <div className="p-10 text-center text-slate-500 bg-slate-900/30 rounded-lg border border-slate-800 border-dashed">
+                Activity feed coming soon.
+              </div>
+            </TabsContent>
           </Tabs>
         </div>
       </div>
