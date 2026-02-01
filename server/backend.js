@@ -13,6 +13,8 @@ const compression = require('compression');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -23,6 +25,27 @@ const PORT = process.env.PORT || 3001;
 
 // Store server reference for graceful shutdown
 let server;
+
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'GroqTales Backend API',
+      version: '1.0.0',
+      description: 'API documentation for GroqTales Backend services',
+    },
+    servers: [
+      {
+        url: 'http://localhost:' + PORT + '/',
+      },
+    ],
+  },
+  apis: ['./routes/*.js','./backend.js'],
+};
+
+const swaggerSpec = swaggerJSDoc(options);
+// Swagger UI setup
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Security middleware
 app.use(
@@ -65,6 +88,16 @@ app.use(express.json({ limit: '10mb' }));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+/**
+ * @swagger
+ * /api/health:
+ *   get:
+ *    summary: Health check endpoint
+ *    description: Returns the health status of the API server and database connection.
+ *    responses:
+ *      200:
+ *        description: To test GET method
+ */
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   const dbConnected = mongoose.connection.readyState === 1;
@@ -153,16 +186,15 @@ connectDB(DB_MAX_RETRIES, DB_RETRY_DELAY_MS)
     });
   })
   .catch((err) => {
-    console.error(
-      'Database connection failed:',
-      err.message
-    );
+    console.error('Database connection failed:', err.message);
 
     // In development, start server anyway without database
     if (process.env.NODE_ENV === 'development') {
       console.warn('Starting server in development mode without database...');
       server = app.listen(PORT, () => {
-        console.log(`GroqTales Backend API server running on port ${PORT} (NO DATABASE)`);
+        console.log(
+          `GroqTales Backend API server running on port ${PORT} (NO DATABASE)`
+        );
         console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
         console.log(`Health check: http://localhost:${PORT}/api/health`);
       });
