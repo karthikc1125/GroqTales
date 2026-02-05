@@ -1,15 +1,15 @@
 import { ProfileHeader } from "@/components/profile/profile-header";
 import { ProfileStats } from "@/components/profile/profile-stats";
+
 import { StoryCard } from "@/components/profile/story-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const mockUser = {
-  displayName: "Alex The Creator",
-  username: "alexcodes",
-  bio: "Weaving AI dreams into Web3 reality. Sci-fi enthusiast and prompt engineer.",
-  walletAddress: "0x71C0000000000000000000000000000000009A23",
-  isOwner: true,
-};
+
+//import { StoryCard } from "@/components/profile/story-card";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+
+
 
 const mockStories = Array(6).fill(null).map((_, i) => ({
   title: `The Neon Horizon ${i + 1}`,
@@ -28,10 +28,19 @@ export default function ProfilePage({ params }: { params: { username: string } }
       <ProfileHeader user={user} />
       
       <div className="container mx-auto px-4">
-        <ProfileStats />
+
+
+        <ProfileStats stats={profileData?.stats} />
+
+        {/* <div className="mt-8">
+          <Tabs defaultValue="stories" className="w-full"> */}
+
+        {/* <ProfileStats /> */}
         
-        <div className="mt-8">
-          <Tabs defaultValue="stories" className="w-full">
+         <div className="mt-8">  
+           <Tabs defaultValue="stories" className="w-full">
+
+
             <div className="flex justify-center md:justify-start mb-6">
               <TabsList className="bg-slate-900 border border-slate-800">
                 <TabsTrigger value="stories">Stories</TabsTrigger>
@@ -66,9 +75,9 @@ export default function ProfilePage({ params }: { params: { username: string } }
                 Activity feed coming soon.
               </div>
             </TabsContent>
-          </Tabs>
+          </Tabs> 
         </div>
-      </div>
-    </main>
+      </div> 
+     </main> 
   );
 }
