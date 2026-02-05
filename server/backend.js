@@ -29,6 +29,51 @@ const PORT = process.env.PORT || 3001;
 // Store server reference for graceful shutdown
 let server;
 
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'GroqTales Backend API',
+      version: '1.0.0',
+      description: 'API documentation for GroqTales Backend services',
+    },
+    servers: [
+      {
+        url: process.env.URL || 'http://localhost:' + PORT + '/',
+      },
+    ],
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+    securty: [
+      {
+        BearerAuth: [],
+      },
+    ],
+  },
+  apis: ['./routes/*.js', './backend.js'],
+};
+
+const swaggerSpec = swaggerJSDoc(options);
+// Swagger UI setup
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    customCss: `
+      .curl-command { display: none !important; }
+      .request-url { display: none !important; }
+      .response-col_links { display: none !important; }
+    `,
+  })
+);
+
 // Security middleware
 app.use(
   helmet({
@@ -49,7 +94,12 @@ app.use(
     origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-API-Key', 'X-Request-ID'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-API-Key',
+      'X-Request-ID',
+    ],
   })
 );
 
@@ -77,12 +127,36 @@ app.use(loggingMiddleware);
  * @swagger
  * /api/health:
  *   get:
- *    summary: Health check endpoint
- *    description: Returns the health status of the API server and database connection.
- *    responses:
- *      200:
- *        description: To test GET method
+ *     tags:
+ *       - Health
+ *     summary: Health check endpoint
+ *     description: Returns API and database health status.
+ *     responses:
+ *       200:
+ *         description: Health status retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                 timestamp:
+ *                   type: string
+ *                   format: date-time
+ *                 version:
+ *                   type: string
+ *                 environment:
+ *                   type: string
+ *                 database:
+ *                   type: object
+ *                   properties:
+ *                     connected:
+ *                       type: boolean
+ *                     readyState:
+ *                       type: integer
  */
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   const dbConnected = mongoose.connection.readyState === 1;
@@ -171,20 +245,19 @@ connectDB(DB_MAX_RETRIES, DB_RETRY_DELAY_MS)
     });
   })
   .catch((err) => {
-    console.error(
-      'Database connection failed:',
-      err.message
-    );
+    console.error('Database connection failed:', err.message);
 
     // In development, start server anyway without database
     if (process.env.NODE_ENV === 'development') {
       logger.warn('Starting server in development mode without database...');
       server = app.listen(PORT, () => {
-        console.log(`GroqTales Backend API server running on port ${PORT} (NO DATABASE)`);
+        console.log(
+          `GroqTales Backend API server running on port ${PORT} (NO DATABASE)`
+        );
         console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
         console.log(`Health check: http://localhost:${PORT}/api/health`);
       });
     } else {
       process.exit(1);
     }
-  });    
+  });
