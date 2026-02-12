@@ -162,6 +162,7 @@ interface PaginatedTransactions {
   total: number;
   page: number;
   totalPages: number;
+  limit: number;
 }
 
 export async function getCreatorTransactions(
@@ -197,6 +198,7 @@ export async function getCreatorTransactions(
     total,
     page,
     totalPages: Math.ceil(total / limit) || 1,
+    limit,
   };
 }
 

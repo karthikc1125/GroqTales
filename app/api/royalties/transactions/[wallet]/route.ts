@@ -15,6 +15,13 @@ export async function GET(
 
     const { wallet } = params;
 
+    if (!wallet) {
+      return NextResponse.json(
+        { success: false, error: 'Wallet address is required' },
+        { status: 400 }
+      );
+    }
+
     // Verify caller owns this wallet or has internal API access
     const requestingWallet = request.headers.get('x-wallet-address')?.toLowerCase();
     const internalKey = request.headers.get('x-internal-api-key');
@@ -28,13 +35,6 @@ export async function GET(
       return NextResponse.json(
         { success: false, error: 'Unauthorized - wallet mismatch or missing credentials' },
         { status: 403 }
-      );
-    }
-
-    if (!wallet) {
-      return NextResponse.json(
-        { success: false, error: 'Wallet address is required' },
-        { status: 400 }
       );
     }
 
@@ -69,7 +69,7 @@ export async function GET(
           total: result.total,
           page: result.page,
           totalPages: result.totalPages,
-          limit,
+          limit: result.limit,
         },
       },
       { status: 200 }

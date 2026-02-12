@@ -361,7 +361,24 @@ router.patch('/buy/:tokenId', authRequired, async (req, res) => {
     const sellerWallet = req.body.sellerWallet;
     const buyerWallet = req.body.buyerWallet;
 
-    if (sellerWallet && buyerWallet) {
+    // Validate wallet address format
+    const walletRegex = /^0x[a-fA-F0-9]{40}$/;
+    const validSeller = sellerWallet && walletRegex.test(sellerWallet);
+    const validBuyer = buyerWallet && walletRegex.test(buyerWallet);
+
+    if (sellerWallet && !validSeller) {
+      logger.warn('Invalid sellerWallet format, skipping royalty tracking', {
+        requestId: req.id,
+        component: 'nft-royalty',
+        tokenId,
+      });
+    } else if (buyerWallet && !validBuyer) {
+      logger.warn('Invalid buyerWallet format, skipping royalty tracking', {
+        requestId: req.id,
+        component: 'nft-royalty',
+        tokenId,
+      });
+    } else if (validSeller && validBuyer) {
       try {
         const royaltyConfig = await RoyaltyConfig.findOne({
           nftId: nft._id,
@@ -377,8 +394,8 @@ router.patch('/buy/:tokenId', authRequired, async (req, res) => {
             salePrice,
             royaltyAmount,
             royaltyPercentage: royaltyConfig.royaltyPercentage,
-            sellerWallet,
-            buyerWallet,
+            sellerWallet: sellerWallet.toLowerCase(),
+            buyerWallet: buyerWallet.toLowerCase(),
             creatorWallet: royaltyConfig.creatorWallet,
             txHash: req.body.txHash || null,
             status: 'pending',
