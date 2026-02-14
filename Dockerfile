@@ -4,8 +4,8 @@ WORKDIR /app
 
 # Install dependencies (using npm ci for cleaner builds if package-lock.json exists)
 COPY package*.json ./
-RUN apk add --no-cache git
-RUN npm install
+RUN apk add --no-cache git curl
+RUN npm ci
 
 # Copy source code
 COPY . .
