@@ -112,6 +112,7 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 // Middleware
+app.use(requestIdMiddleware);
 app.use(compression());
 app.use(morgan('combined'));
 app.use(express.json({ limit: '10mb' }));

@@ -8,7 +8,7 @@ services:
       - mongo_data:/data/db
 
   anvil:
-    image: ghcr.io/foundry-rs/foundry:latest
+    image: ghcr.io/foundry-rs/foundry:v1.0.0
     command: anvil --host 0.0.0.0 --port 8545
     ports:
       - "8545:8545"
