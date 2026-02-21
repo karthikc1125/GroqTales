@@ -245,7 +245,7 @@ function PostCard({
           <div className="flex items-start justify-between">
             <div className="flex items-center space-x-3">
               <Avatar className="h-10 w-10">
-                <AvatarImage src={post.author.avatar} alt={post.author.name} />
+                <AvatarImage src={post.author.avatar} alt={post.author.name} className='object-cover' />
                 <AvatarFallback>{post.author.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div>
@@ -268,12 +268,12 @@ function PostCard({
           </div>
         </CardHeader>
 
-        <CardContent className="pt-0">
+        <CardContent className="pt-5">
           {post.title && (
             <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
           )}
 
-          <p className="text-muted-foreground mb-3 leading-relaxed">
+          <p className="text-muted-foreground mb-5 leading-relaxed">
             {post.content}
           </p>
 
@@ -284,7 +284,7 @@ function PostCard({
           )}
 
           {post.genre && post.genre.length > 0 && (
-            <div className="flex flex-wrap gap-1 mb-3">
+            <div className="flex flex-wrap gap-1 mb-3 mt-5">
               {post.genre.map((g) => (
                 <Badge key={g} variant="secondary" className="text-xs">
                   {g}
@@ -294,7 +294,7 @@ function PostCard({
           )}
 
           {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1 mb-3">
+            <div className="flex flex-wrap gap-1 mb-5">
               {post.tags.map((tag) => (
                 <Badge key={tag} variant="outline" className="text-xs">
                   #{tag}
