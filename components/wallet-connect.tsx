@@ -77,7 +77,8 @@ export default function WalletConnect() {
       10: 'https://optimistic.etherscan.io',
     };
     const explorerUrl = explorerUrls[chainId] || 'https://etherscan.io';
-    window.open(`${explorerUrl}/address/${account}`, '_blank');
+    const newWindow = window.open(`${explorerUrl}/address/${account}`, '_blank', 'noopener,noreferrer');
+    if (newWindow) newWindow.opener = null;
   }, [account, chainId]);
 
   const handleMetaMaskConnect = async () => {
@@ -150,8 +151,10 @@ export default function WalletConnect() {
               </button>
 
               <button 
-                onClick={handleWalletConnect}
-                className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group"
+                disabled
+                aria-disabled="true"
+                title="Coming Soon"
+                className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 opacity-50 cursor-not-allowed transition-all group"
               >
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
@@ -159,10 +162,10 @@ export default function WalletConnect() {
                   </div>
                   <div className="text-left">
                     <h3 className="font-semibold text-white">WalletConnect</h3>
-                    <p className="text-xs text-white/40">Scan with mobile app</p>
+                    <p className="text-xs text-white/40">Coming Soon</p>
                   </div>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center opacity-50">
                   <ChevronDown className="w-4 h-4 -rotate-90 text-white/50" />
                 </div>
               </button>

@@ -33,11 +33,21 @@ function PostActions({ post, onVote }: { post: CommunityPost; onVote: (id: strin
   return (
     <div className="flex items-center justify-between text-white/50 pt-4 mt-2 border-t border-white/10">
       <div className="flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/10">
-        <button onClick={() => onVote(post.id, post.userVote === 'up' ? null : 'up')} className={`p-1.5 rounded-full hover:bg-white/10 hover:text-emerald-400 transition-colors ${post.userVote === 'up' ? 'text-emerald-400 bg-emerald-400/10' : ''}`}>
+        <button 
+          onClick={() => onVote(post.id, post.userVote === 'up' ? null : 'up')} 
+          aria-label={post.userVote === 'up' ? "Remove upvote" : "Upvote"}
+          aria-pressed={post.userVote === 'up'}
+          className={`p-1.5 rounded-full hover:bg-white/10 hover:text-emerald-400 transition-colors ${post.userVote === 'up' ? 'text-emerald-400 bg-emerald-400/10' : ''}`}
+        >
           <ChevronUp className="w-4 h-4" />
         </button>
         <span className={`text-sm font-semibold min-w-[2ch] text-center ${post.userVote === 'up' ? 'text-emerald-400' : post.userVote === 'down' ? 'text-rose-400' : 'text-white/70'}`}>{post.likes}</span>
-        <button onClick={() => onVote(post.id, post.userVote === 'down' ? null : 'down')} className={`p-1.5 rounded-full hover:bg-white/10 hover:text-rose-400 transition-colors ${post.userVote === 'down' ? 'text-rose-400 bg-rose-400/10' : ''}`}>
+        <button 
+          onClick={() => onVote(post.id, post.userVote === 'down' ? null : 'down')} 
+          aria-label={post.userVote === 'down' ? "Remove downvote" : "Downvote"}
+          aria-pressed={post.userVote === 'down'}
+          className={`p-1.5 rounded-full hover:bg-white/10 hover:text-rose-400 transition-colors ${post.userVote === 'down' ? 'text-rose-400 bg-rose-400/10' : ''}`}
+        >
           <ChevronDown className="w-4 h-4" />
         </button>
       </div>
@@ -122,7 +132,8 @@ export default function CommunityFeed() {
           },
           content: story.summary || story.content || `Check out this latest community addition: ${story.title || 'Untitled'}`,
           title: story.title,
-          genre: story.tags || [story.genre || 'General'],
+          genre: Array.isArray(story.tags) ? story.tags : (story.tags ? [story.tags] : (Array.isArray(story.genre) ? story.genre : (story.genre ? [story.genre] : ['General']))),
+          tags: Array.isArray(story.tags) ? story.tags : (story.tags ? [story.tags] : (Array.isArray(story.genre) ? story.genre : (story.genre ? [story.genre] : ['General']))),
           timestamp: new Date(story.created_at || story.createdAt || Date.now()),
           likes: story.likesCount || story.likes_count || story.likes || 0,
           comments: story.commentsCount || story.comments_count || story.comments || 0,
@@ -254,7 +265,7 @@ export default function CommunityFeed() {
                   <div key={nft.id} className="flex items-center gap-4 group cursor-pointer">
                     <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-white/20 perspective-1000">
                       <motion.div whileHover={{ rotateY: 15, rotateX: 5 }} className="w-full h-full preserve-3d">
-                        <Image src={nft.img} alt="" fill className="object-cover transition-transform group-hover:scale-110" />
+                        <Image src={nft.img} alt={nft.title} fill className="object-cover transition-transform group-hover:scale-110" />
                       </motion.div>
                     </div>
                     <div>

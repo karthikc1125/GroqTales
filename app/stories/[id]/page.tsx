@@ -52,12 +52,17 @@ export default function StoryPage({ params }: { params: { id: string } }) {
       try {
         const storyData = fetchStoryById(params.id);
         if (!storyData) {
+          setStory(null);
+          setComments([]);
+          setRelatedStories([]);
           toast({ title: 'Story Not Found', description: "The story doesn't exist.", variant: 'destructive' });
           return;
         }
         setStory(storyData);
-        setUpvotes(storyData.likes || 0);
-        setDownvotes(Math.floor((storyData.likes || 100) * 0.2));
+        
+        const likes = storyData.likes ?? 100;
+        setUpvotes(likes);
+        setDownvotes(Math.floor(likes * 0.2));
 
         const mockComments: Comment[] = [
           { id: '1', text: 'This story is absolutely mesmerizing! The world-building is so detailed.', author: 'CreativeMind', authorAvatar: `https://api.dicebear.com/7.x/personas/svg?seed=CreativeMind`, timestamp: new Date(Date.now() - 8640000), likes: 24, isVerified: true },

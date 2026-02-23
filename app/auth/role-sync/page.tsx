@@ -15,11 +15,17 @@ export default function RoleSyncPage() {
       
       if (preferredRole) {
         // Update user metadata in Supabase
-        await supabase.auth.updateUser({
+        const { error } = await supabase.auth.updateUser({
           data: { preferred_role: preferredRole }
         });
         
-        // Clean up
+        if (error) {
+          console.error("Failed to sync user role metadata", error);
+          // Return early so we don't clear the local preference to try again later
+          return;
+        }
+
+        // Clean up on success
         localStorage.removeItem('preferred_role');
       }
 

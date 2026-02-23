@@ -112,7 +112,7 @@ export function UserNav() {
               className="cursor-pointer focus:bg-primary/10 focus:text-primary rounded-none transition-all"
             >
                <Link
-                href={`/profile/${account}`} 
+                href={`/profile/${account || session?.user?.id}`} 
                 className="flex items-center w-full uppercase py-2"
               >
                 <User className="mr-2 h-4 w-4" />
@@ -143,6 +143,17 @@ export function UserNav() {
                 <span>My NFTs</span>
               </Link>
             </DropdownMenuItem>
+
+            {/* Additional Wallet Link for Supabase Users lacking Web3 */}
+            {!account && (
+              <DropdownMenuItem
+                onClick={() => connectWallet()}
+                className="cursor-pointer focus:bg-emerald-500/10 focus:text-emerald-400 text-emerald-500 rounded-none transition-all uppercase py-2 font-semibold"
+              >
+                <Wallet className="mr-2 h-4 w-4" />
+                <span>Connect Web3 Wallet</span>
+              </DropdownMenuItem>
+            )}
           </DropdownMenuGroup>
 
           <DropdownMenuSeparator className="h-px bg-white/10 mx-0 my-1" />
