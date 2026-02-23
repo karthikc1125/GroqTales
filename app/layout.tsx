@@ -21,6 +21,7 @@ import { QueryProvider } from '@/components/query-provider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import BackToTop from '@/components/back-to-top';
+import { GlobalLoadingWrapper } from '@/components/global-loading-wrapper';
 
 // Optimize font loading
 const inter = Inter({
@@ -94,8 +95,20 @@ function getQuickBootScript(): string {
   }
 }
 
+// Get app version from root VERSION file
+function getAppVersion(): string {
+  try {
+    const filePath = path.join(process.cwd(), 'VERSION');
+    return fs.readFileSync(filePath, 'utf8').trim();
+  } catch (e) {
+    console.warn('Could not read VERSION file:', e);
+    return '1.0.0';
+  }
+}
+
 // Quick boot script to prevent flashing and improve initial load
 const quickBootScript = getQuickBootScript();
+const appVersion = getAppVersion();
 
 export const metadata: Metadata = {
   title: 'GroqTales - AI-Generated Story NFTs',
@@ -206,8 +219,9 @@ export default function RootLayout({
           <QueryProvider>
             <ThemeProvider
               attribute="class"
-              defaultTheme="system"
-              enableSystem={true}
+              defaultTheme="dark"
+              forcedTheme="dark"
+              enableSystem={false}
               disableTransitionOnChange={false}
               storageKey="groqtales-theme"
             >
@@ -220,9 +234,13 @@ export default function RootLayout({
                       tabIndex={-1}
                       className="container mx-auto px-4 py-6 flex-grow focus:outline-2 focus:outline-primary"
                     >
-                      {children}
+                      <React.Suspense fallback={null}>
+                        <GlobalLoadingWrapper>
+                          {children}
+                        </GlobalLoadingWrapper>
+                      </React.Suspense>
                     </main>
-                    <Footer />
+                    <Footer version={appVersion} />
                   </div>
                 </ClientLayout>
               </AnimatedLayout>

@@ -49,6 +49,42 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'picsum.photos',
       },
+      {
+        protocol: 'https',
+        hostname: 'ik.imagekit.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'blogger.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'escapetoromance.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.nyfa.edu',
+      },
+      {
+        protocol: 'https',
+        hostname: 'celadonbooks.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'advicewonders.wordpress.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'motivatevalmorgan.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+      },
     ],
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],

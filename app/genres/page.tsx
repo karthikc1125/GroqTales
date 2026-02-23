@@ -169,7 +169,7 @@ const quizQuestions = [
   {
     id: 1,
     question: "You find a mysterious door in your basement. What do you do?",
-    emoji: "🚪",
+    icon: <Sparkles className="w-12 h-12 mx-auto text-blue-400" />,
     options: [
       { text: "Analyze it with scanning equipment", genre: "Science Fiction" },
       { text: "Cast a revealing spell on it", genre: "Fantasy" },
@@ -180,7 +180,7 @@ const quizQuestions = [
   {
     id: 2,
     question: "Your ideal Saturday looks like…",
-    emoji: "☀️",
+    icon: <Compass className="w-12 h-12 mx-auto text-amber-400" />,
     options: [
       { text: "Hiking a mountain trail to the summit", genre: "Adventure" },
       { text: "Binge-reading a love story under a blanket", genre: "Romance" },
@@ -191,7 +191,7 @@ const quizQuestions = [
   {
     id: 3,
     question: "If you could have one superpower…",
-    emoji: "⚡",
+    icon: <Wand2 className="w-12 h-12 mx-auto text-purple-400" />,
     options: [
       { text: "Teleportation across the universe", genre: "Science Fiction" },
       { text: "Seeing glimpses of the future", genre: "Paranormal" },
@@ -202,7 +202,7 @@ const quizQuestions = [
   {
     id: 4,
     question: "The world is ending. What caused it?",
-    emoji: "🌍",
+    icon: <Globe className="w-12 h-12 mx-auto text-emerald-400" />,
     options: [
       { text: "A tyrannical government pushed too far", genre: "Dystopian" },
       { text: "Ancient magic awakened", genre: "Fantasy" },
@@ -424,8 +424,8 @@ export default function GenresPage() {
             <div className="absolute top-4 right-8 w-16 h-16 border-4 border-white/20 rounded-full" />
             <div className="absolute top-12 right-20 w-8 h-8 border-3 border-white/15 rounded-full" />
             <div className="absolute bottom-2 left-12 w-10 h-10 border-3 border-white/10 rounded-full" />
-            <div className="absolute top-2 left-1/3 text-4xl opacity-20">🎯</div>
-            <div className="absolute bottom-2 right-1/4 text-3xl opacity-[0.15]">🔮</div>
+            <div className="absolute top-2 left-1/3 text-4xl opacity-20"><Sparkles className="w-8 h-8"/></div>
+            <div className="absolute bottom-2 right-1/4 text-3xl opacity-[0.15]"><Rocket className="w-8 h-8"/></div>
 
             <div className="relative z-10 text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-sm text-xs font-black uppercase tracking-widest mb-3">
@@ -465,7 +465,7 @@ export default function GenresPage() {
                   return (
                     <>
                       <div className="text-center mb-8">
-                        <span className="text-5xl mb-4 block">{currentQ.emoji}</span>
+                        <div className="mb-4 block">{currentQ.icon}</div>
                         <h3 className="text-xl font-black text-foreground">
                           {currentQ.question}
                         </h3>
@@ -494,7 +494,7 @@ export default function GenresPage() {
             ) : (
               /* Quiz result */
               <div className="text-center py-8">
-                <span className="text-6xl mb-4 block">🎉</span>
+                <Sparkles className="w-16 h-16 mx-auto mb-4 text-purple-500" />
                 <h3 className="comic-display text-3xl text-foreground mb-3">
                   Your Genre Is…
                 </h3>
@@ -523,10 +523,10 @@ export default function GenresPage() {
                   <Button
                     onClick={resetQuiz}
                     variant="outline"
-                    className="border-3 border-foreground font-black uppercase rounded-none"
+                    className="border-3 border-foreground font-black uppercase rounded-none group flex items-center gap-2"
                     style={{ boxShadow: '4px 4px 0px 0px var(--shadow-color)' }}
                   >
-                    Retake Quiz 🔄
+                    Retake Quiz <Compass className="w-4 h-4 group-hover:-rotate-180 transition-transform duration-500" />
                   </Button>
                 </div>
               </div>

@@ -83,3 +83,6 @@ create policy "Users can delete their own stories." on public.stories for delete
 
 -- Enable realtime for stories
 alter publication supabase_realtime add table public.stories;
+
+-- Reload the PostgREST schema cache so the API picks up the new tables immediately (Fixes PGRST205)
+NOTIFY pgrst, 'reload schema';

@@ -8,15 +8,14 @@ considered End of Security Support (EoSS).
 
 | Version | Status               | Support Level                 | Notes                               |
 | ------- | -------------------- | ----------------------------- | ----------------------------------- |
-| 1.3.5   | ✅ Active (Latest)   | Full (features + security)    | Current production release          |
-| 1.3.0   | ✅ Active (Previous) | Security & critical bug fixes | Upgrade recommended                 |
-| 1.1.0   | ⚠️ Maintenance       | Critical security only        | Security maintenance — upgrade ASAP |
+| 1.3.7   | ✅ Active (Latest)   | Full (features + security)    | Current production release          |
+| 1.3.5   | ✅ Active (Previous) | Security & critical bug fixes | Upgrade recommended                 |
+| > 1.1.0 | ⚠️ Maintenance       | Critical security only        | Security maintenance — upgrade ASAP |
 | < 1.1.0 | ❌ EoSS              | No updates                    | Please upgrade immediately          |
 
 > [!IMPORTANT]
-> Version 1.3.x introduces a professional website redesign with Spline 3D hero, neon branding,
-> off-chain royalty tracking, WCAG 2.1 AA accessibility compliance, and a complete CSS theme rewrite.
-> Upgrading to **1.3.5** is strongly recommended.
+> Version 1.3.7 introduces major cinematic UI/UX overhauls, Supabase interactive authentication flows, global emote removal, and on-chain action steppers with off-chain access control rules.
+> Upgrading to **1.3.7** is strongly recommended.
 
 ## Reporting a Vulnerability
 
@@ -95,10 +94,10 @@ GroqTales takes the security of user data seriously. We implement industry-stand
 protect data both in transit and at rest:
 
 - HTTPS enforced in production
-- MongoDB connections authenticated and encrypted
-- JWT-based session management with secure token handling
+- PostgreSQL/Supabase DB connections authenticated and encrypted with Row Level Security (RLS)
+- Secure session management with encrypted JWT tokens managed via Supabase Auth
 - No secrets exposed in client-side bundles
-- Wallet signatures verified server-side (SIWE)
+- Wallet signatures verified server-side (SIWE/Monad)
 
 ## Third-Party & Dependency Security
 
@@ -127,8 +126,8 @@ still report it — include the upstream advisory if available.
 | Runtime        | Node.js                   | ≥ 20.0.0   |
 | Framework      | Next.js                   | 14.1.0     |
 | Backend        | Express.js                | 5.1.0      |
-| Database       | MongoDB (Mongoose)        | 9.x        |
-| Auth           | NextAuth.js + SIWE        | 4.x        |
+| Database       | Supabase (PostgreSQL)     | latest     |
+| Auth           | Supabase Auth + SIWE      | 2.x        |
 | HTTP Security  | Helmet                    | 8.x        |
 | Rate Limiting  | express-rate-limit        | 8.x        |
 | Validation     | Zod + express-validator   | 3.x / 7.x  |

@@ -7,7 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Supported Versions
 
-Active full support: 1.3.5 (latest), 1.3.0 (previous). Security maintenance (critical fixes only): 1.1.0. All versions < 1.1.0 are End of Security Support (EoSS). See `SECURITY.md` for the evolving support policy.
+Active full support: 1.3.7 (latest), 1.3.5 (previous). Security maintenance (critical fixes only): 1.1.0. All versions < 1.1.0 are End of Security Support (EoSS). See `SECURITY.md` for the evolving support policy.
+
+## [1.3.7] - 2026-02-24
+
+### Bug Fixes & Documentation
+
+- **Merge Conflicts Resolved**: Resolved UI and structural conflicts in `app/dashboard/page.tsx`, `app/nft-gallery/page.tsx`, `app/stories/[id]/page.tsx`, `components/ai-story-generator.tsx`, `components/community-feed.tsx`, and `components/header.tsx` by adopting the latest local cinematic UI redesigns over `origin/main`.
+- **README Modernization**: Replaced top deployment badges with a clean GroqTales logo-centered layout, added "Built by Indie Hub" credit, and integrated a GitHub stargazers request to improve premium branding.
+- **Wiki Standardization**: Injected the GroqTales logo header systematically across all Markdown files in the `wiki/` directory for visual consistency.
+
+### Major Features - Cinematic Page Overhauls & Auth Flow
+
+- **Authentication Shift**: Migrated explicit "Connect Wallet" main navigation interaction to a comprehensive, dedicated Auth flow using Supabase.
+- **New Auth Pages**: Created highly aesthetic, CRM-style animated `/sign-in` and `/sign-up` pages via Framer Motion matching the comic/GenZ theme.
+- **Multi-modal Login**: Integrated Email/Password, Google OAuth (Gmail), and Web3 Wallet connect options directly within the new Auth interface.
+- **Story Creation**: Refactored `/create/ai-story` into a cinematic glassmorphic interface with clear step-by-step visual indicators and advanced customization accordions. Corrected parser syntax error in tabs.
+- **Story Detail & NFT View**: Redesigned `/stories/[id]` to feature a 3D rotating NFT hero section and an immersive, distraction-free "Reading Mode".
+- **NFT Gallery**: Revamped `/nft-gallery` with a live activity ticker, masonry layout, and fluid hover animations matching the cinematic aesthetic.
+- **Community Feed**: Overhauled `/community` with an integrated XP tracker, "Showcase" section for favorite NFTs, and modern timeline feed. Connected feed to real-time Supabase Database, removing mock data.
+- **Clean Animations**: Integrated `framer-motion` layout animations and unified interaction micro-animations across all reconstructed pages.
+- **Header Responsiveness Fix**: Lowered the breakpoint threshold for the Navigation menu collapse from `xl` to `lg` so that Mac/Standard laptop screens see the full row of navigation items instead of the mobile hamburger menu.
+
+### Security, Loading & Access Control Enhancements
+
+- **Aesthetic Loading Screen**: Added `<GlobalLoadingWrapper>` dynamically inside root layout to transition seamlessly across pages. Elevated the global loading visual with orbital rings.
+- **Next Config Image Security**: Expanded `remotePatterns` in `next.config.js` to whitelist numerous external CDNs.
+- **Access Rules & Steppers**: Added an 'Access Control & Security' card to the Creator Dashboard outlining specific Off-Chain roles (Reader vs Creator) and On-Chain requirements (Minting, AI tools).
+- **Security Notes & Last Login**: Integrated a security warning message on the dashboard and implemented a 'Last Login' timestamp indicator in the User Nav dropdown.
+- **Global Emote Removal**: Stripped all emojis and non-cinematic UI elements from the homepage, auth flows, footer, and genres explorer for a consistent premium aesthetic.
+- **Security Documentation**: Updated `SECURITY.md` to reflect version 1.3.7 as the latest, mapping Supabase Auth changes and new UI rules standard.
 
 ## [1.3.5] - 2026-02-21
 
