@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Supported Versions
 
-Active full support: 1.3.8 (latest), 1.3.7 (previous). Security maintenance (critical fixes only): 1.1.0. All versions < 1.1.0 are End of Security Support (EoSS). See `SECURITY.md` for the evolving support policy.
+Active full support: 1.3.9 (latest), 1.3.8 (previous). Security maintenance (critical fixes only): 1.1.0. All versions < 1.1.0 are End of Security Support (EoSS). See `SECURITY.md` for the evolving support policy.
 
-## [1.3.8] - 2026-02-26
+## [1.3.9] - 2026-02-26
+
+### Bug Fixes & Infrastructure
+
+- **Database Plan Migration**: Updated the PostgreSQL database plan in `render.yaml` from the legacy `starter` tier to the currently supported `free` tier to resolve dynamic deployment issues on Render.
+- **Typewriter Animation Fix**: Resolved a timing bug in the `useTypewriter` hook within the Hero section (`app/page.tsx`). The animation now properly dynamically adjusts speed between the typing and deleting phases by utilizing recursive `setTimeout` logic instead of a fixed-interval `setInterval`, creating a smoother, more realistic typing effect.
 
 ### Infrastructure — Migration from Vercel/Netlify to Cloudflare Pages
 

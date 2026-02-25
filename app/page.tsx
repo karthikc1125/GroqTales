@@ -77,11 +77,18 @@ function useTypewriter(
     };
 
     // Single interval — speed adapts to typing vs deleting phase via delete ref
-    const id = setInterval(tick, isDeletingRef.current ? deletingSpeed : typingSpeed);
+    let timeoutId: NodeJS.Timeout;
+
+    const runTick = () => {
+      tick();
+      timeoutId = setTimeout(runTick, isDeletingRef.current ? deletingSpeed : typingSpeed);
+    };
+
+    timeoutId = setTimeout(runTick, isDeletingRef.current ? deletingSpeed : typingSpeed);
 
     // Re-create the interval whenever the speed should change
     // (framer-motion / React will clean up via the return)
-    return () => clearInterval(id);
+    return () => clearTimeout(timeoutId);
   // Re-run only when props change — internal state changes use refs
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [texts, typingSpeed, deletingSpeed, pauseAfterType, pauseAfterDelete]);
