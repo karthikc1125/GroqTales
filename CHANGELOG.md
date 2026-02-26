@@ -15,7 +15,11 @@ Active full support: 1.3.9 (latest), 1.3.8 (previous). Security maintenance (cri
 
 - **Database Plan Migration**: Updated the PostgreSQL database plan in `render.yaml` from the legacy `starter` tier to the currently supported `free` tier to resolve dynamic deployment issues on Render.
 - **Cloudflare Pages Build Fix**: Resolved `cross-env: not found` error that caused all Cloudflare Pages deployments to fail with exit code 127. `cross-env` was listed in `devDependencies` but Cloudflare's build environment sets `NODE_ENV=production` before `npm install`, skipping devDep installation. Replaced `cross-env NEXT_PUBLIC_BUILD_MODE=true` with POSIX inline syntax (`NEXT_PUBLIC_BUILD_MODE=true next build`) in both `build` and `cf-build` scripts — `wrangler.toml` already injects this variable for preview/production environments, making `cross-env` redundant.
+- **Cloudflare Build Dependencies Fix**: Moved `tailwindcss`, `autoprefixer`, `postcss`, `typescript`, and `@cloudflare/next-on-pages` from `devDependencies` to `dependencies` so they are installed when Cloudflare Pages runs `npm install` with `NODE_ENV=production`.
 - **Typewriter Animation Fix**: Resolved a timing bug in the `useTypewriter` hook within the Hero section (`app/page.tsx`). The animation now properly dynamically adjusts speed between the typing and deleting phases by utilizing recursive `setTimeout` logic instead of a fixed-interval `setInterval`, creating a smoother, more realistic typing effect.
+- **PR CI Workflow**: Added `.github/workflows/pr-ci.yml` — automated GitHub Actions workflow that runs lint, unit tests, and a full Cloudflare Pages build check (without deploying) on every PR targeting `main`.
+- **CI Workflow Fixes**: Fixed all failing GitHub Actions workflows across 7 files — replaced `npm ci` with `npm install --legacy-peer-deps` (3 workflows), removed `cache: 'npm'` that requires a `package-lock.json` committed to the repo (all workflows), and replaced `node-version-file: '.nvmrc'` with explicit `node-version: '20'`.
+- **Preview Comment Fix**: Fixed `cloudflare-preview.yml` PR comment — SHA `.slice(0,7)` was rendering as literal text instead of executing as JS; branch name from `github.head_ref` was injected unsanitized. Both values now computed as proper JS variables via `process.env` with markdown-dangerous characters stripped.
 
 ### Infrastructure — Migration from Vercel/Netlify to Cloudflare Pages
 
@@ -76,7 +80,7 @@ Active full support: 1.3.9 (latest), 1.3.8 (previous). Security maintenance (cri
 
 **Fix:**
 - `wrangler.toml`: Removed the invalid `[build]` table; added `pages_build_output_dir = ".vercel/output/static"` at the top level (the adapter's output directory).
-- `package.json`: Updated `cf-build` script to `cross-env NEXT_PUBLIC_BUILD_MODE=true next build && npx @cloudflare/next-on-pages@1`. Added `@cloudflare/next-on-pages@^1.13.12` to `devDependencies`.
+- `package.json`: Updated `cf-build` script to `NEXT_PUBLIC_BUILD_MODE=true next build && npx @cloudflare/next-on-pages@1` (POSIX inline env assignment). Added `@cloudflare/next-on-pages@^1.13.12` to dependencies.
 - `next.config.js`: Added `setupDevPlatform()` call (guarded to `NODE_ENV === 'development'`) so Cloudflare bindings are available during local dev with `wrangler pages dev`.
 - `public/_headers`: Created Cloudflare Pages `_headers` file for edge-level security headers and static asset caching (mirrors the security headers in `next.config.js`).
 

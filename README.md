@@ -535,7 +535,7 @@ tuned!_
 <h2 align="center">Active At</h2>
 
 <p align="center">
-  <img src="public/OSCG26 Label.jpg (1).jpeg" alt="OSCG'26 — Open Source Community Gathering 2026" width="600" />
+  <img src="public/OSCG26%20Label.jpg%20(1).jpeg" alt="OSCG'26 — Open Source Community Gathering 2026" width="600" />
 </p>
 
 ---
