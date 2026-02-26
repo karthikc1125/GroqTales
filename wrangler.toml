@@ -5,16 +5,16 @@
 #
 # HOW THIS WORKS
 # ─────────────────────────────────────────────────────────────
-# @cloudflare/next-on-pages transforms the Next.js build output
-# into a format Cloudflare Pages understands. It writes the
-# static assets + edge functions into .vercel/output/static,
+# Next.js static export (output: 'export') builds the application
+# into a collection of static HTML/JS/CSS files. It writes the
+# static assets into the `out` directory,
 # which is what `pages_build_output_dir` points to.
 #
 # Build command (set in Cloudflare Pages dashboard):
-#   npx @cloudflare/next-on-pages@1
+#   npm run cf-build
 #
 # Build output directory (set in Cloudflare Pages dashboard):
-#   .vercel/output/static
+#   out
 # ============================================================
 
 name = "groqtales"
